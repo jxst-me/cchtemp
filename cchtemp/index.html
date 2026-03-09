@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carolina Crafted Homes – Myrtle Beach, SC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:      #2e4a6b;
+      --navy-dark: #1e3350;
+      --navy-mid:  #3d5f82;
+      --steel:     #6b8cae;
+      --white:     #ffffff;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Averia Serif Libre', Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    /* ── BACKGROUND ── */
+    .bg-scene {
+      position: fixed; inset: 0; z-index: 0;
+      background: linear-gradient(180deg,
+        #c9dff0 0%, #ddedf8 28%, #eaf4fb 45%,
+        #b8d8ef 60%, #7aaecf 72%, #4a86b8 82%, #2e5f8a 100%);
+    }
+    .cloud {
+      position: absolute;
+      background: rgba(255,255,255,0.55);
+      border-radius: 50px;
+      filter: blur(18px);
+      animation: drift var(--spd) ease-in-out infinite alternate;
+    }
+    .cloud-1 { width:320px; height:60px; top:8%;  left:5%;  --spd:14s; }
+    .cloud-2 { width:200px; height:40px; top:14%; left:55%; --spd:18s; animation-delay:-6s; }
+    .cloud-3 { width:260px; height:50px; top:6%;  left:72%; --spd:16s; animation-delay:-3s; }
+    .cloud-4 { width:140px; height:30px; top:20%; left:30%; --spd:20s; animation-delay:-9s; }
+    @keyframes drift {
+      from { transform: translateX(-12px); }
+      to   { transform: translateX(12px); }
+    }
+    .horizon {
+      position: absolute; top:54%; left:0; right:0; height:3px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6) 30%, rgba(200,230,255,0.8) 50%, rgba(255,255,255,0.6) 70%, transparent);
+      filter: blur(1px);
+      animation: hShimmer 7s ease-in-out infinite alternate;
+    }
+    @keyframes hShimmer { from{opacity:.6} to{opacity:1} }
+    .water-lines {
+      position: absolute; bottom:0; left:0; right:0; height:40%; overflow:hidden;
+    }
+    .wl {
+      position: absolute; left:0; right:0; height:2px;
+      background: linear-gradient(90deg, transparent 5%, rgba(255,255,255,0.3) 35%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.3) 65%, transparent 95%);
+      border-radius:2px;
+      animation: wlShimmer var(--ws) ease-in-out infinite alternate;
+    }
+    @keyframes wlShimmer {
+      from { opacity:.3; transform:scaleX(0.92) translateX(-2%); }
+      to   { opacity:.7; transform:scaleX(1.04) translateX(2%); }
+    }
+    .wave-band {
+      position:absolute; bottom:0; left:-10%; right:-10%; height:22%;
+      background:rgba(30,80,130,0.18);
+      border-radius:60% 60% 0 0/40% 40% 0 0;
+      animation:waveBob 8s ease-in-out infinite;
+    }
+    .wave-band-2 {
+      height:14%; background:rgba(20,60,110,0.22);
+      border-radius:55% 55% 0 0/35% 35% 0 0;
+      animation:waveBob 11s ease-in-out infinite reverse;
+    }
+    @keyframes waveBob {
+      0%,100% { transform:translateY(0) scaleX(1.02); }
+      50%      { transform:translateY(-6px) scaleX(0.98); }
+    }
+
+    /* ── PAGE ── */
+    .page {
+      position:relative; z-index:1;
+      min-height:100vh;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      padding:48px 24px 40px;
+    }
+
+    /* ── BRAND ── */
+    .brand { text-align:center; opacity:0; animation:fadeUp .9s ease .2s forwards; }
+    .logo-img {
+      width:clamp(160px,28vw,220px); height:auto;
+      filter:drop-shadow(0 4px 16px rgba(30,51,80,0.18));
+      mix-blend-mode: multiply;
+      margin-bottom:8px;
+    }
+    .brand-tagline {
+      font-weight:300; font-size:.68rem; letter-spacing:.38em;
+      text-transform:uppercase; color:var(--steel);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display:flex; align-items:center; gap:12px;
+      margin:28px 0 24px; width:100%; max-width:520px;
+      opacity:0; animation:fadeUp .9s ease .5s forwards;
+    }
+    .div-line { flex:1; height:1px; background:rgba(46,74,107,0.25); }
+
+    /* ── CARD ── */
+    .card {
+      background:rgba(255,255,255,0.72);
+      backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,0.85);
+      border-radius:6px;
+      box-shadow:0 8px 40px rgba(30,51,80,0.12), 0 2px 8px rgba(30,51,80,0.08);
+      padding:40px 48px 36px; max-width:560px; width:100%;
+      text-align:center; opacity:0; animation:fadeUp .9s ease .7s forwards;
+    }
+    .card-headline {
+      font-weight:400; font-style:italic;
+      font-size:clamp(1.35rem,3vw,1.75rem);
+      color:var(--navy-dark); margin-bottom:12px; line-height:1.35;
+    }
+    .card-body { font-weight:300; font-size:.95rem; line-height:1.85; color:#3a4f68; }
+
+    /* ── CONTACT ── */
+    .contact { margin-top:28px; display:flex; flex-direction:column; gap:12px; text-align:left; }
+    .c-row {
+      display:flex; align-items:center; gap:14px;
+      padding:10px 14px;
+      background:rgba(220,232,242,0.45);
+      border-radius:4px; border:1px solid rgba(46,74,107,0.1);
+      transition:background .2s;
+    }
+    .c-row:hover { background:rgba(220,232,242,0.75); }
+    .c-icon {
+      width:34px; height:34px; border-radius:50%; background:var(--navy);
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .c-icon svg { width:15px; height:15px; stroke:#fff; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .c-label { font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--steel); display:block; margin-bottom:2px; }
+    .c-value { font-size:.88rem; font-weight:400; color:var(--navy-dark); }
+    .c-value a { color:var(--navy); text-decoration:none; transition:color .2s; }
+    .c-value a:hover { color:var(--navy-mid); text-decoration:underline; }
+
+    /* ── SOCIAL ── */
+    .social {
+      display:flex; justify-content:center; gap:14px; margin-top:22px; flex-wrap:wrap;
+      opacity:0; animation:fadeUp .9s ease 1s forwards;
+    }
+    .soc-btn {
+      display:inline-flex; align-items:center; gap:9px;
+      padding:10px 24px; background:var(--navy); color:#fff;
+      border-radius:3px; font-family:'Averia Serif Libre',serif;
+      font-size:.78rem; font-weight:400; letter-spacing:.12em;
+      text-transform:uppercase; text-decoration:none;
+      box-shadow:0 3px 14px rgba(30,51,80,0.22);
+      transition:all .22s ease;
+    }
+    .soc-btn:hover { background:var(--navy-dark); transform:translateY(-2px); box-shadow:0 6px 20px rgba(30,51,80,0.3); }
+    .soc-btn svg { width:15px; height:15px; }
+
+    /* ── FOOTER ── */
+    .footer { margin-top:36px; text-align:center; opacity:0; animation:fadeUp .9s ease 1.2s forwards; }
+    .footer p { font-weight:300; font-size:.68rem; letter-spacing:.14em; color:rgba(46,74,107,0.6); line-height:2; }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(20px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @media(max-width:520px) {
+      .card { padding:28px 20px; }
+      .soc-btn { flex:1 1 120px; justify-content:center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-scene">
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+  <div class="cloud cloud-4"></div>
+  <div class="horizon"></div>
+  <div class="water-lines" id="wlines"></div>
+  <div class="wave-band"></div>
+  <div class="wave-band wave-band-2"></div>
+</div>
+
+<div class="page">
+
+  <div class="brand">
+    <img class="logo-img" src="/mnt/user-data/uploads/Untitled__17_.png" alt="Carolina Crafted Homes Logo"/>
+    <p class="brand-tagline">Myrtle Beach, South Carolina</p>
+  </div>
+
+  <div class="divider">
+    <div class="div-line"></div>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2e4a6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="22"/>
+      <path d="M5 15l7 7 7-7"/><path d="M5 12H2a10 10 0 0020 0h-3"/>
+    </svg>
+    <div class="div-line"></div>
+  </div>
+
+  <div class="card">
+    <h2 class="card-headline">Our website is temporarily offline.</h2>
+    <p class="card-body">
+      We're working to get things back up and truly appreciate your patience.
+      In the meantime, our team is here and ready to help —
+      reach out directly or follow us on social media for the latest updates.
+    </p>
+
+    <div class="contact">
+      <div class="c-row">
+        <div class="c-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.16 1.18 2 2 0 012.15 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <span class="c-label">Phone</span>
+          <div class="c-value"><a href="tel:+17049109111">(704) 910-9111</a></div>
+        </div>
+      </div>
+
+      <div class="c-row">
+        <div class="c-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <span class="c-label">Email</span>
+          <div class="c-value"><a href="/cdn-cgi/l/email-protection#bfd6d1d9d0ffdcdecdd0d3d6d1dedccdded9cbdadbd7d0d2dacc91dcd0d2"><span class="__cf_email__" data-cfemail="d2bbbcb4bd92b1b3a0bdbebbbcb3b1a0b3b4a6b7b6babdbfb7a1fcb1bdbf">[email&#160;protected]</span></a></div>
+        </div>
+      </div>
+
+      <div class="c-row">
+        <div class="c-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <span class="c-label">Address</span>
+          <div class="c-value">4702 Oleander Dr, Ste 300 · Myrtle Beach, SC 29577</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="social-row">
+    <a href="https://www.facebook.com/CarolinaCraftedHomes/" target="_blank" rel="noopener" class="soc-btn">
+      <svg viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      Facebook
+    </a>
+    <a href="https://www.youtube.com/@carolinacraftedhomes" target="_blank" rel="noopener" class="soc-btn">
+      <svg viewBox="0 0 24 24" fill="white"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58a2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#2e4a6b"/></svg>
+      YouTube
+    </a>
+  </div>
+
+  <div class="footer">
+    <p>© 2025 Carolina Crafted Homes &nbsp;·&nbsp; Buy · Sell · Build · Renovate<br/>Myrtle Beach, SC 29577</p>
+  </div>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const wlines = document.getElementById('wlines');
+  for (let i = 0; i < 14; i++) {
+    const el = document.createElement('div');
+    el.classNa
