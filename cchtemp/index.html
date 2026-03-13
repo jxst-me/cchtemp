@@ -26,7 +26,8 @@
     @keyframes waveBob{0%,100%{transform:translateY(0) scaleX(1.02)}50%{transform:translateY(-6px) scaleX(0.98)}}
     .page{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px 40px}
     .brand{text-align:center;opacity:0;animation:fadeUp .9s ease .2s forwards}
-    .logo-img{width:clamp(160px,28vw,220px);height:auto;mix-blend-mode:multiply;margin-bottom:8px}
+    .logo-img{width:clamp(140px,22vw,190px);height:auto;mix-blend-mode:multiply;margin-bottom:10px}
+    .brand-name{font-weight:400;font-size:clamp(1.4rem,3.5vw,2rem);letter-spacing:.08em;color:var(--navy-dark);margin-bottom:5px;line-height:1.2}
     .brand-tagline{font-weight:300;font-size:.68rem;letter-spacing:.38em;text-transform:uppercase;color:var(--steel)}
     .divider{display:flex;align-items:center;gap:12px;margin:28px 0 24px;width:100%;max-width:520px;opacity:0;animation:fadeUp .9s ease .5s forwards}
     .div-line{flex:1;height:1px;background:rgba(46,74,107,0.25)}
@@ -47,7 +48,7 @@
     .soc-btn:hover{background:var(--navy-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(30,51,80,0.3)}
     .soc-btn svg{width:15px;height:15px}
     .footer{margin-top:36px;text-align:center;opacity:0;animation:fadeUp .9s ease 1.2s forwards}
-    .footer p{font-weight:300;font-size:.68rem;letter-spacing:.14em;color:rgba(255,255,255,0.75);line-height:2}
+    .footer p{font-weight:300;font-size:.68rem;letter-spacing:.14em;color:rgba(46,74,107,0.6);line-height:2}
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     @media(max-width:520px){.card{padding:28px 20px}.soc-btn{flex:1 1 120px;justify-content:center}}
   </style>
@@ -68,7 +69,8 @@
 <div class="page">
 
   <div class="brand">
-    <img class="logo-img" src="https://jxst-me.github.io/cchtemp/cchtemp/asset/carolinacraftedhomes_logo.png" alt="Carolina Crafted Homes Logo"/>
+    <img class="logo-img" src="https://jxst-me.github.io/cchtemp/cchtemp/asset/carolinacraftedhomes_logo.png" alt="Carolina Crafted Homes"/>
+    <h1 class="brand-name">Carolina Crafted Homes</h1>
     <p class="brand-tagline">Myrtle Beach, South Carolina</p>
   </div>
 
@@ -107,7 +109,7 @@
         </div>
         <div>
           <span class="c-label">Email</span>
-          <div class="c-value"><a href="mailto:info@carolinacraftedhomes.com">info@carolinacraftedhomes.com</a></div>
+          <div class="c-value"><a href="/cdn-cgi/l/email-protection#e28b8c848da28183908d8e8b8c83819083849687868a8d8f8791cc818d8f"><span class="__cf_email__" data-cfemail="741d1a121b341715061b181d1a15170615120011101c1b1911075a171b19">[email&#160;protected]</span></a></div>
         </div>
       </div>
 
@@ -141,16 +143,9 @@
 
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const w = document.getElementById('wlines');
   for (let i = 0; i < 14; i++) {
     const el = document.createElement('div');
     el.className = 'wl';
-    const spd = (3 + Math.random() * 5).toFixed(1) + 's';
-    const delay = (Math.random() * 4).toFixed(1) + 's';
-    el.style.cssText = 'top:' + (i / 14 * 100) + '%;--ws:' + spd + ';animation-delay:' + delay + ';opacity:' + (0.3 + Math.random() * 0.4);
-    w.appendChild(el);
-  }
-</script>
-</body>
-</html>
+    const spd = (3 + Math.random() * 5).toFi
